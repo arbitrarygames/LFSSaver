@@ -1,12 +1,7 @@
 ﻿using LFSSaver.FileFinder;
 using LFSSaver.FileFinder.Impl;
-using Ninject;
 using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LFSSaver.Zipper;
 
 namespace LFSSaver.Core
 {
@@ -15,6 +10,7 @@ namespace LFSSaver.Core
     public override void Load()
     {
       Bind<IFileFinder>().To<RegexFileFinder>().InTransientScope();
+      Bind<IZipper>().To<Zipper.Impl.Zipper>().InTransientScope();
       Bind<Config>().ToSelf().InSingletonScope();
     }
   }
