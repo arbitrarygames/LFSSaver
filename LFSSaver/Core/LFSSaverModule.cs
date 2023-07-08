@@ -15,6 +15,7 @@ namespace LFSSaver.Core
     public override void Load()
     {
       Bind<IFileFinder>().To<RegexFileFinder>().InTransientScope();
+      Bind<Config>().ToSelf().InSingletonScope();
     }
   }
 }
