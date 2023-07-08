@@ -49,7 +49,7 @@ namespace LFSSaver.FileFinder.Impl
       var files = new List<string>();
       foreach (string f in Directory.GetFiles(dir))
       {
-        if (Regex.IsMatch(f, regex))
+        if (Regex.IsMatch(f.ToLower(), regex))
         {
           files.Add(f);
         }

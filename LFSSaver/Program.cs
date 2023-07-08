@@ -14,16 +14,18 @@ public class Program {
     kernel.Load(new LFSSaverModule());
     var fileFinder = kernel.Get<IFileFinder>();
     var zipper = kernel.Get<IZipper>();
-
-
+    
+    Console.WriteLine("LFSSaver v0.1.0");
+    Console.WriteLine("Searching for files...");
     var files = fileFinder.FindFiles();
-    Console.WriteLine("Matching files: ");
-    foreach (var file in files)
+    if (files.Count > 0)
     {
-      Console.WriteLine(file);
+      Console.WriteLine("Zipping {0} files...", files.Count);
+      zipper.ZipFiles(files);
     }
-    Console.WriteLine("Zipping files...");
-    zipper.ZipFiles(files);
-    Console.WriteLine("Done!");
+    else
+    {
+      Console.WriteLine("No matching files found.");
+    }
   }
 }
